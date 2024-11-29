@@ -1,3 +1,21 @@
+//// SCRIPT BOTÃO BACK TO TOP
+// Exibe o botão quando o usuário rola para baixo
+window.onscroll = function () {
+  const backToTopButton = document.getElementById("backToTop");
+  if (document.documentElement.scrollTop > 300) {
+    // Mostrar após 300px de rolagem
+    backToTopButton.style.display = "block";
+  } else {
+    backToTopButton.style.display = "none";
+  }
+};
+
+// Função para rolar suavemente até o topo
+document.getElementById("backToTop").onclick = function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+////----
+
 //Compartilhar
 document.getElementById("shareButton").addEventListener("click", async () => {
   if (navigator.share) {
@@ -30,66 +48,15 @@ window.addEventListener("load", function () {
 $(".value").mask("000.000.000,00", { reverse: true }); // Formata o valor monetário com pontuação e vírgula (ex: 1.000,00)
 $(".percent").mask("00,00", { reverse: true }); // Formata o valor percentual com vírgula (ex: 10,00%)
 
-//// CONVERTE PRAZO MENSAL EM ANUAL E VICE VERSA
-// Pega os campos onde o usuário digita os prazos
-const periodoAnual = document.querySelector("#periodoAnual");
-const periodo = document.querySelector("#periodo");
-// Enquanto o usuário digita o prazo anual, transforma em prazo mensal e preenche o campo Prazo (meses)
-periodoAnual.addEventListener("input", function () {
-  if (this.value == "") periodo.value = "";
-  else periodo.value = Math.floor(periodoAnual.value * 12);
-});
-// Enquanto o usuário digita o prazo mensal, transforma em prazo anual e preenche o campo Prazo (anos)
-// O campo Prazo (anos) fica desabilitado quando o usuário preenche o Prazo (meses) e habilita quando está em branco
-periodo.addEventListener("input", function () {
-  if (this.value == "") {
-    periodoAnual.value = "";
-    periodoAnual.removeAttribute("disabled");
-  } else {
-    periodoAnual.setAttribute("disabled", true);
-    periodoAnual.value = Math.floor(periodo.value / 12);
-  }
-});
-//// -----------
-
-//// CONVERTE JUROS MENSAIS EM ANUAIS E VICE VERSA
-// Pega os campos onde o usuário digita as taxas de juros
-const txPeriodoAnual = document.querySelector("#txPeriodoAnual");
-const txPeriodo = document.querySelector("#txPeriodo");
-// Enquanto o usuário digita o juros anual, transforma em juros mensal e preenche o campo Taxa Mensal
-txPeriodoAnual.addEventListener("input", function () {
-  if (this.value == "") {
-    txPeriodo.value = "";
-  } else {
-    let value = this.value.replace(",", ".");
-    let txMensal = Math.pow(1 + value / 100, 1 / 12) - 1;
-    txPeriodo.value = (txMensal * 100).toFixed(2).replace(".", ",");
-  }
-});
-// Enquanto o usuário digita o juros mensal, transforma em juros anual e preenche o campo Taxa Anual
-txPeriodo.addEventListener("input", function () {
-  if (this.value == "") {
-    txPeriodoAnual.value = "";
-  } else {
-    let value = this.value.replace(",", ".");
-    let txPeriodo = Math.pow(1 + value / 100, 12) - 1;
-    txPeriodoAnual.value = (txPeriodo * 100).toFixed(2).replace(".", ",");
-  }
-});
-//// -----------
-
 // Recupera valores previamente salvos no sessionStorage e preenche os campos correspondentes
-document.getElementById("periodo").value =
-  sessionStorage.getItem("periodo") ?? "";
+document.getElementById("idade_atual").value =
+  sessionStorage.getItem("idade_atual") ?? "";
 
-document.getElementById("periodoAnual").value =
-  sessionStorage.getItem("periodoAnual") ?? "";
-
-document.getElementById("txPeriodo").value =
-  sessionStorage.getItem("txPeriodo") ?? "";
+document.getElementById("idade_aposentadoria").value =
+  sessionStorage.getItem("idade_aposentadoria") ?? "";
 
 document.getElementById("txPeriodoAnual").value =
-  sessionStorage.getItem("txPeriodoAnual") ?? "";
+  sessionStorage.getItem("txPeriodoAnual") ?? "10,00";
 
 document.getElementById("valorInicial").value =
   sessionStorage.getItem("valorInicial") ?? "";
@@ -97,8 +64,8 @@ document.getElementById("valorInicial").value =
 document.getElementById("valorRecorrente").value =
   sessionStorage.getItem("valorRecorrente") ?? "";
 
-document.getElementById("rendaPassiva").value =
-  sessionStorage.getItem("rendaPassiva") ?? "";
+document.getElementById("aposentadoria").value =
+  sessionStorage.getItem("aposentadoria") ?? "";
 
 // Limpar o Session Storage ao clicar no botão de reset
 document.querySelector("#btn-reset").addEventListener("click", function () {
@@ -108,15 +75,39 @@ document.querySelector("#btn-reset").addEventListener("click", function () {
 // Função de cálculo de Renda Passiva
 function calcularRendaPassiva() {
   // Captura os valores inseridos pelo usuário
-  const periodo = document.getElementById("periodo").value;
-  const periodoAnual = document.getElementById("periodoAnual").value;
-  const txPeriodo = document.getElementById("txPeriodo").value;
+  const idade_atual = document.querySelector("#idade_atual").value;
+  const idade_aposentadoria = document.querySelector(
+    "#idade_aposentadoria"
+  ).value;
+  const periodoAnual = idade_aposentadoria - idade_atual;
+  const periodo =
+    idade_aposentadoria == "" ||
+    idade_aposentadoria == 0 ||
+    idade_atual == "" ||
+    idade_atual == 0
+      ? ""
+      : Math.floor(periodoAnual * 12);
   const txPeriodoAnual = document.getElementById("txPeriodoAnual").value;
+  const txPeriodo =
+    txPeriodoAnual != ""
+      ? (
+          (Math.pow(
+            1 + parseFloat(formatarValor(txPeriodoAnual)) / 100,
+            1 / 12
+          ) -
+            1) *
+          100
+        )
+          .toFixed(2)
+          .replace(".", ",")
+      : "";
   const valorInicial = document.getElementById("valorInicial").value;
   const valorRecorrente = document.getElementById("valorRecorrente").value;
-  const rendaPassiva = document.getElementById("rendaPassiva").value;
+  const rendaPassiva = document.getElementById("aposentadoria").value;
 
   // Salva os valores no sessionStorage para manter as informações na página
+  sessionStorage.setItem("idade_atual", idade_atual);
+  sessionStorage.setItem("idade_aposentadoria", idade_aposentadoria);
   sessionStorage.setItem("periodo", periodo);
   sessionStorage.setItem("periodoAnual", periodoAnual);
   sessionStorage.setItem("txPeriodo", txPeriodo);
@@ -133,6 +124,7 @@ function calcularRendaPassiva() {
     txPeriodo,
     rendaPassiva,
   ];
+  console.log(periodo, valorInicial, valorRecorrente, txPeriodo, rendaPassiva);
   let totalCamposNPreenchidos = 0;
   let campoEmBranco = -1; // Variável para identificar o campo em branco
 
@@ -177,15 +169,19 @@ function calcularRendaPassiva() {
 
     // Se os meses forem 0, retorna apenas os anos
     if (meses === 0) {
-      return `${totalMeses} meses (ou ${anoTexto})`; // Exemplo: "12 meses (ou 1 ano)"
+      // return `${totalMeses} meses (ou ${anoTexto})`; // Exemplo: "12 meses (ou 1 ano)"
+      return `${anoTexto} (ou ${totalMeses} meses)`; // Exemplo: "1 ano (ou 12 meses)"
     }
 
     // Retorna no formato "X meses (ou X anos e X meses)"
-    return `${totalMeses} meses (ou ${anoTexto} e ${mesTexto})`; // Exemplo: "13 meses (ou 1 ano e 1 mês)"
+    // return `${totalMeses} meses (ou ${anoTexto} e ${mesTexto})`; // Exemplo: "13 meses (ou 1 ano e 1 mês)"
+    return `${anoTexto} e ${mesTexto} (ou ${totalMeses} meses)`; // Exemplo: "1 ano e 1 mês (ou 13 meses)"
   }
 
   // Conversão e cálculo dos valores
   let prazo = periodo ? periodo : 0,
+    idadeAtualCalculada = idade_atual,
+    idadeAposentadoriaCalculada = idade_aposentadoria,
     taxa = txPeriodo ? parseFloat(formatarValor(txPeriodo)) : 0,
     taxaAnual = txPeriodoAnual ? parseFloat(formatarValor(txPeriodoAnual)) : 0,
     inicial = valorInicial ? parseFloat(formatarValor(valorInicial)) : 0,
@@ -212,6 +208,14 @@ function calcularRendaPassiva() {
       }
 
       prazo = loop - 1;
+      idadeAtualCalculada =
+        idade_atual == "" || idade_atual == 0
+          ? parseFloat(idade_aposentadoria) - parseFloat(Math.floor(prazo / 12))
+          : idade_atual;
+      idadeAposentadoriaCalculada =
+        idade_aposentadoria == "" || idade_aposentadoria == 0
+          ? parseFloat(idade_atual) + parseFloat(Math.floor(prazo / 12))
+          : idade_aposentadoria;
       investido = inicial + recorrente * prazo;
       rendimentos = vlrAtual - (inicial + recorrente * prazo);
       acumulado = vlrAtual;
@@ -310,6 +314,14 @@ function calcularRendaPassiva() {
   // Salva os resultados no sessionStorage
   sessionStorage.setItem("prazo", prazo ? anosEMeses : "N/A");
   sessionStorage.setItem(
+    "idade_atual",
+    idadeAtualCalculada ? idadeAtualCalculada : "N/A"
+  );
+  sessionStorage.setItem(
+    "idade_aposentadoria",
+    idadeAposentadoriaCalculada ? idadeAposentadoriaCalculada : "N/A"
+  );
+  sessionStorage.setItem(
     "valorInicial",
     inicial ? formatarValor(inicial, false) : "N/A"
   );
@@ -331,7 +343,7 @@ function calcularRendaPassiva() {
     taxaAnual ? formatarValor(taxaAnual, false) : "N/A"
   );
   sessionStorage.setItem(
-    "rendaPassiva",
+    "aposentadoria",
     renda ? formatarValor(renda, false) : "N/A"
   );
   sessionStorage.setItem(
@@ -353,7 +365,7 @@ function voltarFormulario(e) {
   e.preventDefault(); // Previne o comportamento padrão do botão
   document.querySelector(".flip-card").classList.remove("flip-card-flipped"); // Reverte a animação do cartão
   setTimeout(() => {
-    window.location.href = "/"; // Redireciona para a página inicial
+    window.location.href = "index.html"; // Redireciona para a página inicial
   }, 500);
 }
 
@@ -371,7 +383,7 @@ if (document.getElementById("voltarBtn")) {
 // Verifica se a página de resultados está acessada diretamente sem cálculo
 currentPage = window.location.pathname.split("/").pop(); // Pega a última parte da URL /index.html, /results.html etc.
 if (currentPage == "results.html" && !sessionStorage.getItem("rendaPassiva")) {
-  window.location.href = "/"; // Redireciona para o início se não houver dados calculados
+  window.location.href = "index.html"; // Redireciona para o início se não houver dados calculados
 }
 
 if (document.getElementById("resultPrazo")) {
@@ -382,6 +394,12 @@ if (document.getElementById("resultPrazo")) {
   ).innerHTML = `<p class="d-flex justify-content-between border-bottom" style="border-color:#6c757d1a;"><span>Prazo:</span><span>${
     sessionStorage.getItem("prazo") || "---"
   }</span></p>`;
+
+  document.getElementById(
+    "resultIdadeAtual"
+  ).innerHTML = `<p class="d-flex justify-content-between border-bottom" style="border-color:#6c757d1a;"><span>Idades (Atual / Aposentadoria):</span><span>${
+    sessionStorage.getItem("idade_atual") || "---"
+  } / ${sessionStorage.getItem("idade_aposentadoria") || "---"}</span></p>`;
 
   document.getElementById(
     "resultValorInicial"
@@ -421,8 +439,8 @@ if (document.getElementById("resultPrazo")) {
 
   document.getElementById(
     "resultRendaPassiva"
-  ).innerHTML = `<p class="d-flex justify-content-between border-bottom" style="border-color:#6c757d1a;"><span>Renda Passiva:</span><span>$ ${
-    sessionStorage.getItem("rendaPassiva") || "---"
+  ).innerHTML = `<p class="d-flex justify-content-between border-bottom" style="border-color:#6c757d1a;"><span>Aposentadoria:</span><span>$ ${
+    sessionStorage.getItem("aposentadoria") || "---"
   }</span></p>`;
 
   document.getElementById(
@@ -436,6 +454,10 @@ if (document.getElementById("copiarBtn")) {
   // Função para copiar os resultados
   document.getElementById("copiarBtn").addEventListener("click", function () {
     const prazo = document.getElementById("resultPrazo").textContent;
+    const idade_atual = document.getElementById("resultIdadeAtual").textContent;
+    const idade_aposentadoria = document.getElementById(
+      "resultIdadeAposentadoria"
+    ).textContent;
     const valorInicial =
       document.getElementById("resultValorInicial").textContent;
     const valorRecorrente = document.getElementById(
@@ -456,10 +478,12 @@ if (document.getElementById("copiarBtn")) {
 
     // Formata o resultado para ser copiado
     const resultado = `Calcular Renda Passiva
-https://www.calcularrendapassiva.com
+https://www.calcularaposentadoria.com
 
 Resultados
 ${prazo}
+${idade_atual}
+${idade_aposentadoria}
 ${valorInicial}
 ${valorRecorrente}
 ${valorInvestido}

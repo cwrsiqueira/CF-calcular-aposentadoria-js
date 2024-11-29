@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Calculadora de Renda Passiva | Resultados</title>
+    <title>Calculadora de Aposentadoria | Resultados</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->
@@ -22,16 +22,20 @@
 
 <body>
 
+    <button id="backToTop" class="btn btn-primary p-3">
+        <i class="fa-solid fa-circle-arrow-up fa-2xl"></i>
+    </button>
+
     <div class="wrapper">
         <main class="content">
             <div class="container">
                 <section class="title-section text-center">
-                    <h1 class="title">Calcular Renda Passiva</h1>
+                    <h1 class="title">Calcular Aposentadoria</h1>
                     <div class="version-area">
-                        <span class="version">v2.1.3 - 12/11/2024</span>
+                        <span class="version">v1.0.0 - 29/11/2024</span>
                     </div>
                     <div class="logo"></div>
-                    <p class="fw-bold">Calcule sua renda passiva ou outro dado que falta para alcançar sua meta.
+                    <p class="fw-bold">Calcule sua Aposentadoria ou outro dado que falta para alcançar sua meta.
                         <br>
                         Deixe o campo que
                         deseja
@@ -60,68 +64,69 @@
                         <!-- Formulário (verso) -->
                         <div class="flip-card-front">
                             <form id="rendaForm">
-                                <p>Preencha Prazo em meses ou anos</p>
-                                <div class="row">
+
+                                <a href="#comoutilizar"> Como utilizar a calculadora de
+                                    aposentadoria <i class="fa-regular fa-circle-question"></i></a>
+                                <div class="row mt-3">
                                     <div class="col-sm-6">
                                         <div class="form-floating mb-3">
-                                            <input type="search" inputmode="numeric" class="form-control" id="periodo"
-                                                placeholder="Prazo (meses)" maxlength="3">
-                                            <label for="periodo">Prazo (meses)</label>
+                                            <input type="search" inputmode="numeric" class="form-control"
+                                                id="idade_atual" placeholder="Idade Atual (anos)" maxlength="2">
+                                            <label for="idade_atual">Idade Atual (anos)</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating mb-3">
                                             <input type="search" inputmode="numeric" class="form-control"
-                                                id="periodoAnual" placeholder="Prazo (anos)" maxlength="2">
-                                            <label for="periodoAnual">Prazo (anos)</label>
+                                                id="idade_aposentadoria" placeholder="Idade Aposentadoria (anos)"
+                                                maxlength="2">
+                                            <label for="idade_aposentadoria">Idade Aposentadoria (anos)</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <p>Preencha Taxa mensal ou anual (%)</p>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-floating mb-3">
                                             <input type="search" inputmode="numeric" class="form-control percent"
-                                                id="txPeriodo" placeholder="Taxa Mensal (%)" maxlength="5">
-                                            <label for="txPeriodo">Taxa mensal (%)</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="search" inputmode="numeric" class="form-control percent"
-                                                id="txPeriodoAnual" placeholder="Taxa anual (%)" maxlength="5">
+                                                id="txPeriodoAnual" placeholder="Taxa anual (%)" maxlength="5"
+                                                value="10,00">
                                             <label for="txPeriodoAnual">Taxa anual (%)</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="search" inputmode="numeric" class="form-control value"
-                                        id="valorInicial" placeholder="Valor Inicial">
-                                    <label for="valorInicial">Valor inicial</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="search" inputmode="numeric" class="form-control value"
+                                                id="valorInicial" placeholder="Valor Inicial">
+                                            <label for="valorInicial">Valor inicial</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="search" inputmode="numeric" class="form-control value"
+                                                id="valorRecorrente" placeholder="Valor Recorrente Mensal">
+                                            <label for="valorRecorrente">Valor recorrente mensal</label>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-floating mb-3">
                                     <input type="search" inputmode="numeric" class="form-control value"
-                                        id="valorRecorrente" placeholder="Valor Recorrente Mensal">
-                                    <label for="valorRecorrente">Valor recorrente mensal</label>
-                                </div>
-
-                                <div class="form-floating mb-3">
-                                    <input type="search" inputmode="numeric" class="form-control value"
-                                        id="rendaPassiva" placeholder="Renda Passiva">
-                                    <label for="rendaPassiva">Renda passiva</label>
+                                        id="aposentadoria" placeholder="Aposentadoria">
+                                    <label for="aposentadoria">Aposentadoria</label>
                                 </div>
 
                                 <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-success fs-6" id="calcularBtn">
+                                    <button type="button" class="btn btn-sm btn-success" id="calcularBtn">
                                         <i class="fas fa-calculator"></i> Calcular
                                     </button>
-                                    <button type="reset" class="btn btn-danger fs-6" id="btn-reset">
+                                    <button type="reset" class="btn btn-sm btn-danger" id="btn-reset">
                                         <i class="fas fa-trash-alt"></i> Limpar
                                     </button>
-                                    <button class="btn btn-warning fs-6">
+                                    <button id="shareButton" class="btn btn-sm btn-warning">
                                         <i class="fas fa-share-alt"></i> Compartilhar
                                     </button>
                                 </div>
@@ -130,8 +135,12 @@
 
                         <!-- Resultados (verso) -->
                         <div class="flip-card-back">
+                            <a href="#entendendo"> Entendendo os resultados <i
+                                    class="fa-regular fa-circle-question"></i></a>
                             <div class="result-section">
                                 <p id="resultPrazo"></p>
+                                <p id="resultIdadeAtual"></p>
+                                <p id="resultIdadeAposentadoria"></p>
                                 <p id="resultValorInicial"></p>
                                 <p id="resultValorRecorrente"></p>
                                 <p id="resultValorInvestido"></p>
@@ -161,7 +170,7 @@
                     <div class="row gap-3">
 
                         <div class="section-divider">
-                            <span class="section-title">App Grátis na Playstore</span>
+                            <span class="section-title">Ajude a manter a calculadora gratuita</span>
                         </div>
 
                         <div class="col-sm">
@@ -170,16 +179,6 @@
                                 <div class="row align-items-center">
                                     <div class="col-2"><i class="fas fa-coffee" style="font-size: 28px;"></i></div>
                                     <div class="col-10">Me pague um cafezinho</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm">
-                            <a href="https://play.google.com/store/apps/details?id=com.cwrsiqueira.crp_app&pcampaignid=web_share"
-                                target="_blank" class="btn btn-lg btn-playstore d-block">
-                                <div class="row align-items-center">
-                                    <div class="col-2"><i class="fa-brands fa-google-play" style="font-size: 28px;"></i>
-                                    </div>
-                                    <div class="col-10">Baixe o app na PlayStore</div>
                                 </div>
                             </a>
                         </div>
@@ -193,9 +192,23 @@
                 <div class="d-flex flex-column flex-sm-row justify-content-center">
                     <div>
                         <ul>
-                            <a href="https://calcularemprestimo.com" target="_blank"
+                            <a href="https://calcularrendapassiva.com" target="_blank"
                                 class="text-decoration-none text-secondary-emphasis">
                                 <li class="position-relative border border-1 border-emphasis p-2 rounded">
+                                    <strong class="position-relative">Calculadora de Renda Passiva</strong>
+                                    <br>
+                                    <small>Calcule sua renda passiva ou outro dado que falta para alcançar sua
+                                        meta.</small>
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        Grátis
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </li>
+                            </a>
+                            <a href="https://calcularemprestimo.com" target="_blank"
+                                class="text-decoration-none text-secondary-emphasis">
+                                <li class="position-relative border border-1 border-emphasis p-2 rounded mt-3">
                                     <strong class="position-relative">Calculadora de Empréstimo</strong>
                                     <br>
                                     <small>Calcule o empréstimo, a parcela, o prazo ou a taxa, na tabela PRICE ou
@@ -218,129 +231,121 @@
                     <span class="section-title">Bom saber</span>
                 </div>
 
-                <div class="information-text">
-
-
+                <div class="information-text" id="entendendo">
                     <h4>Entendendo os Resultados</h4>
-                    <p>Abaixo estão as explicações detalhadas de cada item calculado para ajudar você a entender melhor
-                        o que cada um significa e como ele contribui para o seu planejamento financeiro.</p>
+                    <p>Abaixo estão as explicações detalhadas de cada item calculado para ajudar você a compreender como
+                        alcançar sua aposentadoria ideal e como cada fator contribui para o seu planejamento financeiro.
+                    </p>
 
                     <ul>
-                        <li><strong>Prazo (meses):</strong> Este é o tempo que você pretende investir, expresso em
-                            meses. O prazo influencia diretamente o montante acumulado e os rendimentos que você poderá
-                            obter. Quanto maior o prazo, maior tende a ser o efeito dos juros compostos, fazendo seu
-                            investimento crescer mais rapidamente.</li>
+                        <li><strong>Idade Atual (anos):</strong> A sua idade atual é o ponto de partida para o
+                            planejamento. É a base para calcular quanto tempo você tem até atingir a idade desejada para
+                            aposentadoria.</li>
 
-                        <li><strong>Valor Inicial:</strong> Este é o valor que você está começando a investir. Quanto
-                            maior for o valor inicial, mais rápido você poderá alcançar seus objetivos financeiros. Este
-                            valor é essencial para iniciar seu investimento e começar a gerar rendimentos.</li>
+                        <li><strong>Idade Aposentadoria (anos):</strong> Esta é a idade que você pretende atingir sua
+                            independência financeira. Se a calculadora estimou este valor, significa que, com os dados
+                            fornecidos, você pode alcançar sua meta de aposentadoria nesta idade.</li>
 
-                        <li><strong>Valor Recorrente Mensal:</strong> Este é o valor que você investe mensalmente além
-                            do valor inicial. Contribuições mensais consistentes ajudam a aumentar o montante investido
-                            e aceleram o crescimento da sua renda passiva ao longo do tempo.</li>
-
-                        <li><strong>Valor Investido:</strong> Representa a soma do valor inicial e dos valores
-                            recorrentes ao longo do período. Este valor indica quanto você investiu diretamente do seu
-                            próprio bolso durante todo o prazo.</li>
-
-                        <li><strong>Rendimentos:</strong> Este é o valor gerado pelos juros sobre o seu investimento ao
-                            longo do tempo. Ele mostra quanto dinheiro seu investimento produziu por meio da taxa de
-                            rendimento. Os rendimentos são o principal componente que contribui para a construção da
-                            renda passiva.</li>
-
-                        <li><strong>Taxa Mensal (%):</strong> A taxa de rendimento mensal é o percentual que seu
-                            investimento cresce a cada mês. Uma taxa maior significa maior crescimento dos rendimentos
-                            ao longo do tempo, impactando diretamente no valor acumulado e na renda passiva.</li>
-
-                        <li><strong>Renda Passiva:</strong> Este é o valor mensal que você poderá receber sem precisar
-                            trabalhar ativamente. Com base no seu investimento e nas taxas de rendimento, a renda
-                            passiva indica o quanto você pode retirar dos seus rendimentos enquanto mantém o valor
-                            principal investido.</li>
-
-                        <li><strong>Valor Acumulado:</strong> Este é o valor total que você terá ao final do prazo de
-                            investimento, incluindo o valor investido e os rendimentos acumulados. Esse montante
-                            representa a soma do valor que você investiu e do lucro gerado pelos juros, mostrando o
-                            quanto seu patrimônio cresceu ao longo do tempo.</li>
-                    </ul>
-
-                    <p>Essas informações são fundamentais para ajudá-lo a compreender como o seu investimento se
-                        desenvolve ao longo do tempo e como cada um dos parâmetros afeta o resultado final. Lembre-se de
-                        que a consistência e o planejamento são as chaves para alcançar a sua meta de renda passiva!</p>
-
-                    <h2>O que é Renda Passiva?</h2>
-                    <p>A <strong>renda passiva</strong> é o dinheiro que você recebe regularmente sem a necessidade de
-                        um
-                        trabalho
-                        ativo
-                        constante. Ou seja, ao contrário do seu salário ou renda proveniente de trabalho direto, a renda
-                        passiva
-                        é
-                        obtida a partir de investimentos ou ativos que geram retorno, como imóveis alugados, ações,
-                        fundos de
-                        investimento, entre outros.</p>
-                    <p>Esse conceito é fundamental para quem deseja alcançar a independência financeira, já que o
-                        objetivo da
-                        renda
-                        passiva é permitir que você continue recebendo dinheiro mesmo sem a necessidade de trabalhar
-                        ativamente.
-                        Com
-                        uma
-                        renda passiva suficiente, você pode cobrir todas as suas despesas de forma contínua, utilizando
-                        o
-                        retorno
-                        dos
-                        seus investimentos.</p>
-                    <p>Aqui estão algumas das formas mais comuns de gerar renda passiva:</p>
-
-                    <ul>
-                        <li><strong>Investimentos em ações</strong>: Ao investir em empresas que pagam dividendos, você
-                            recebe
-                            uma
-                            parte
-                            dos lucros da empresa regularmente, sem precisar vender suas ações.</li>
-                        <li><strong>Fundos imobiliários</strong>: Fundos que investem em imóveis e distribuem parte dos
-                            lucros
-                            de
-                            aluguéis ou vendas para os cotistas.</li>
-                        <li><strong>Juros sobre investimentos</strong>: Aplicações como CDBs, títulos públicos, e outros
-                            tipos
-                            de
-                            renda
-                            fixa geram uma renda passiva na forma de juros, depositados periodicamente em sua conta.
+                        <li><strong>Taxa Anual (%):</strong> Refere-se à taxa de rendimento anual esperada dos seus
+                            investimentos. Essa taxa é essencial para projetar o crescimento do seu patrimônio. Taxas
+                            mais altas aceleram o processo de acumulação de recursos, mas podem envolver maior risco.
                         </li>
-                        <li><strong>Imóveis alugados</strong>: Se você possui imóveis alugados, o valor do aluguel
-                            mensal é
-                            considerado
-                            uma forma de renda passiva.</li>
+
+                        <li><strong>Valor Inicial:</strong> Este é o valor que você já possui para começar a investir.
+                            Um valor inicial maior ajuda a impulsionar seus rendimentos desde o início, especialmente
+                            devido aos efeitos dos juros compostos ao longo do tempo.</li>
+
+                        <li><strong>Valor Recorrente Mensal:</strong> Refere-se ao quanto você pode investir
+                            mensalmente. Contribuições consistentes e crescentes ao longo do tempo são fundamentais para
+                            alcançar sua aposentadoria ideal.</li>
+
+                        <li><strong>Valor Investido:</strong> Indica a soma de todos os valores aportados ao longo do
+                            tempo, incluindo o valor inicial e os investimentos mensais recorrentes. Este é o montante
+                            que você, efetivamente, investiu do seu bolso.</li>
+
+                        <li><strong>Rendimentos:</strong> Representa o valor gerado pelos seus investimentos. Este valor
+                            mostra o impacto dos juros compostos ao longo do prazo, sendo a principal fonte de
+                            crescimento do seu patrimônio para aposentadoria.</li>
+
+                        <li><strong>Valor Acumulado:</strong> O total do seu patrimônio ao final do período de
+                            investimento. Ele inclui tanto o valor investido quanto os rendimentos gerados. Este é o
+                            valor disponível para sustentar sua aposentadoria.</li>
+
+                        <li><strong>Aposentadoria:</strong> Representa o valor mensal que você poderá retirar, de forma
+                            sustentável, do seu patrimônio acumulado. Ele é calculado considerando a preservação do
+                            capital investido, permitindo que os rendimentos continuem a gerar renda passiva mesmo
+                            durante a aposentadoria.</li>
                     </ul>
 
-                    <p>A <strong>Calculadora de Renda Passiva</strong> permite que você simule o quanto seu investimento
-                        pode
-                        gerar
-                        mensalmente com base em diferentes condições de mercado. Assim, você pode planejar melhor sua
-                        jornada
-                        rumo à
-                        independência financeira, ajustando seus investimentos para atingir a renda passiva que cobrirá
-                        suas
-                        despesas e
-                        proporcionará tranquilidade financeira no futuro.</p>
-                    <p>Lembre-se: a chave para alcançar a liberdade financeira por meio da renda passiva é o
-                        planejamento e a
-                        consistência. Comece agora, explore as diferentes simulações e descubra quanto tempo falta para
-                        atingir
-                        suas
-                        metas financeiras!</p>
-                    <p><strong>IMPORTANTE: </strong>Os cálculos realizados por esta calculadora são baseados nas
-                        informações
-                        fornecidas por você e são apenas estimativas. As taxas de rendimento e valores que você insere
-                        não
-                        refletem necessariamente as condições reais do mercado financeiro. Mesmo que fossem baseados em
-                        índices
-                        reais, os resultados dependeriam das variações e flutuações constantes do mercado financeiro.
-                        Portanto,
-                        a calculadora não garante que você atingirá a renda passiva estimada. Lembre-se de que o
-                        desempenho de
-                        qualquer investimento pode mudar devido a fatores externos e dinâmicas do mercado.</p>
+                    <p>Esses resultados ajudam a visualizar o impacto do tempo, das contribuições mensais e da taxa de
+                        rendimento no seu planejamento financeiro. Com isso, você pode ajustar suas metas, priorizar
+                        investimentos e otimizar seus aportes para garantir uma aposentadoria tranquila e sustentável.
+                    </p>
+
+                    <h2>Planejando sua Aposentadoria</h2>
+                    <p>Uma aposentadoria ideal exige uma combinação de planejamento estratégico, disciplina nos
+                        investimentos e escolhas financeiras inteligentes. Alguns passos essenciais incluem:</p>
+
+                    <ul>
+                        <li><strong>Comece o quanto antes:</strong> Quanto mais cedo você começar, maior será o impacto
+                            dos juros compostos no crescimento do seu patrimônio.</li>
+                        <li><strong>Invista regularmente:</strong> A consistência nos aportes mensais é crucial para
+                            acumular um patrimônio sólido ao longo do tempo.</li>
+                        <li><strong>Diversifique seus investimentos:</strong> Alocar recursos em diferentes tipos de
+                            ativos, como renda fixa, ações e fundos imobiliários, reduz riscos e melhora as chances de
+                            alcançar seus objetivos.</li>
+                        <li><strong>Revise periodicamente:</strong> Reavalie suas metas e ajuste seus investimentos
+                            conforme as mudanças na sua vida e no mercado financeiro.</li>
+                    </ul>
+
+                    <p>Com a <strong>Calculadora de Aposentadoria</strong>, você pode simular diferentes cenários e
+                        ajustar suas estratégias para garantir que suas metas sejam atingidas. Lembre-se: consistência e
+                        planejamento são as chaves para o sucesso financeiro.</p>
+
+                    <p><strong>IMPORTANTE:</strong> Os cálculos realizados são estimativas baseadas nos dados fornecidos
+                        e não garantem resultados futuros. As condições de mercado, taxas de retorno e outros fatores
+                        podem impactar os resultados reais. Consulte um profissional financeiro para decisões mais
+                        complexas e estratégicas.</p>
+
+                    <h2>O que é Aposentadoria?</h2>
+                    <p>A <strong>Aposentadoria</strong> é a independência financeira que permite que você viva sem
+                        depender de um trabalho
+                        ativo, sustentando-se com o retorno dos seus investimentos. Ela pode ser composta por diferentes
+                        fontes de
+                        renda, como aplicações financeiras, imóveis alugados, fundos de investimento ou aposentadoria
+                        pública.</p>
+                    <p>Alcançar a aposentadoria ideal envolve planejamento financeiro, investimento disciplinado e
+                        controle sobre os
+                        gastos. É fundamental investir em ativos que gerem rendimentos consistentes e diversificados
+                        para minimizar
+                        riscos e maximizar o retorno.</p>
+
+                    <p>Aqui estão algumas formas comuns de garantir sua aposentadoria:</p>
+                    <ul>
+                        <li><strong>Investimentos em renda fixa</strong>: Títulos públicos e privados que oferecem
+                            retornos estáveis e previsíveis.</li>
+                        <li><strong>Fundos de investimento</strong>: Alternativas que permitem diversificar suas
+                            aplicações e obter rendimentos
+                            de acordo com seu perfil de risco.</li>
+                        <li><strong>Imóveis para aluguel</strong>: Geração de renda mensal a partir de imóveis alugados.
+                        </li>
+                        <li><strong>Ações e dividendos</strong>: Empresas que distribuem parte dos lucros para seus
+                            acionistas.</li>
+                    </ul>
+
+                    <p>Com a <strong>Calculadora de Aposentadoria</strong>, você pode simular diferentes cenários para
+                        planejar sua aposentadoria
+                        com precisão. Lembre-se de que consistência nos investimentos e revisões periódicas do
+                        planejamento são essenciais
+                        para ajustar sua estratégia conforme suas necessidades e mudanças no mercado financeiro.</p>
+
+                    <p><strong>IMPORTANTE:</strong> Esta calculadora fornece estimativas baseadas nos dados inseridos e
+                        não garante
+                        resultados futuros, pois os rendimentos estão sujeitos às condições de mercado e outros fatores
+                        externos.
+                        Utilize-a como uma ferramenta para apoiar seu planejamento financeiro e procure sempre
+                        orientação profissional
+                        para decisões mais complexas.</p>
                 </div>
             </section>
         </main>
