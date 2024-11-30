@@ -382,7 +382,7 @@ if (document.getElementById("voltarBtn")) {
 
 // Verifica se a página de resultados está acessada diretamente sem cálculo
 currentPage = window.location.pathname.split("/").pop(); // Pega a última parte da URL /index.html, /results.html etc.
-if (currentPage == "results.html" && !sessionStorage.getItem("rendaPassiva")) {
+if (currentPage == "results.html" && !sessionStorage.getItem("aposentadoria")) {
   window.location.href = "index.html"; // Redireciona para o início se não houver dados calculados
 }
 
