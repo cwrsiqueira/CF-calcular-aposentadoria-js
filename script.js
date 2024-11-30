@@ -124,7 +124,6 @@ function calcularRendaPassiva() {
     txPeriodo,
     rendaPassiva,
   ];
-  console.log(periodo, valorInicial, valorRecorrente, txPeriodo, rendaPassiva);
   let totalCamposNPreenchidos = 0;
   let campoEmBranco = -1; // Variável para identificar o campo em branco
 
