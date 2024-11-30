@@ -477,7 +477,7 @@ if (document.getElementById("copiarBtn")) {
     ).textContent;
 
     // Formata o resultado para ser copiado
-    const resultado = `Calcular Aposentadoria
+    const resultado = `Calcular Aposentadoria teste
 https://www.calcularaposentadoria.com
 
 Resultados
