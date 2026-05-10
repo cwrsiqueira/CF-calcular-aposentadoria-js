@@ -814,3 +814,8 @@ footer p { margin-bottom: 0.25rem; }
 @media (max-width: 334px) {
   .flip-card { height: 800px; }
 }
+
+/* ===== ADSENSE — bloqueia ads dentro dos cards e flip card ===== */
+.calculadora-container ins.adsbygoogle,
+.flip-card ins.adsbygoogle,
+.card ins.adsbygoogle { display: none !important; }
