@@ -56,8 +56,8 @@ O usuário preenche todos os campos e deixa **um em branco** — esse campo é c
 O prazo em meses é derivado de `(idade aposentadoria - idade atual) × 12`.
 
 ## Códigos de rastreamento
-- **GA4:** G-V1JD0D4KM1 (mesmo do CRP — confirmar com o usuário se é o mesmo)
-- **AdSense:** ca-pub-5865817649832793 (mesmo do CRP — confirmar)
+- **GA4:** G-EN49D76J88 (específico deste projeto — diferente do CRP)
+- **AdSense:** ca-pub-5865817649832793 (mesmo do CRP)
 - **Vercel Analytics:** `/_vercel/insights/script.js`
 
 ## Stack e regras técnicas
