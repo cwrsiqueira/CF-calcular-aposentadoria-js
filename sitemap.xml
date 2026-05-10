@@ -2,10 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Páginas principais -->
   <url>
     <loc>https://calcularaposentadoria.com/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/"/>
-    <xhtml:link rel="alternate" hreflang="en"   href="https://calcularaposentadoria.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calcularaposentadoria.com/en/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,15 +15,93 @@
   <url>
     <loc>https://calcularaposentadoria.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/"/>
-    <xhtml:link rel="alternate" hreflang="en"   href="https://calcularaposentadoria.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calcularaposentadoria.com/en/"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- Termos -->
   <url>
     <loc>https://calcularaposentadoria.com/termos-de-uso-e-politicas-de-privacidade.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/termos-de-uso-e-politicas-de-privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/terms.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/en/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/termos-de-uso-e-politicas-de-privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/terms.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Artigos PT -->
+  <url>
+    <loc>https://calcularaposentadoria.com/artigos/como-usar-calculadora-aposentadoria.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/como-usar-calculadora-aposentadoria.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/how-to-use-retirement-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/artigos/o-que-e-aposentadoria.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/o-que-e-aposentadoria.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/what-is-retirement.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/artigos/quanto-preciso-para-me-aposentar.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/quanto-preciso-para-me-aposentar.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/how-much-do-i-need-to-retire.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/artigos/entendendo-os-resultados.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/entendendo-os-resultados.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/understanding-the-results.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Artigos EN -->
+  <url>
+    <loc>https://calcularaposentadoria.com/en/articles/how-to-use-retirement-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/como-usar-calculadora-aposentadoria.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/how-to-use-retirement-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/en/articles/what-is-retirement.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/o-que-e-aposentadoria.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/what-is-retirement.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/en/articles/how-much-do-i-need-to-retire.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/quanto-preciso-para-me-aposentar.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/how-much-do-i-need-to-retire.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://calcularaposentadoria.com/en/articles/understanding-the-results.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://calcularaposentadoria.com/artigos/entendendo-os-resultados.html"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://calcularaposentadoria.com/en/articles/understanding-the-results.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
