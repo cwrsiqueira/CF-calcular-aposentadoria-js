@@ -79,7 +79,7 @@ IDs dos campos: `#idade_atual`, `#idade_aposentadoria`, `#txPeriodoAnual`, `#val
 - **EN:** lista 14 (`BREVO_LIST_ID_EN=14`)
 
 ## SEO implementado
-- `<h1 class="card-title">` nas páginas principais PT e EN
+- `<h1 class="sr-only">` nas 4 páginas principais (index PT/EN + results PT/EN) — h1 visualmente oculto via `.sr-only`, semânticamente presente para o Google. Não usar `h1.card-title` pois quebra o layout do flex (h1 herda font-weight:bold e não shrinka).
 - `hreflang` PT-BR / EN / x-default (x-default aponta para EN — público global)
 - JSON-LD: `WebApplication` (com `potentialAction`) + `Organization` (com `sameAs`) em PT e EN
 - `sitemap.xml` completo com 14 URLs e hreflang em cada entrada
