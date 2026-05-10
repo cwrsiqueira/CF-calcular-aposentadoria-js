@@ -60,6 +60,14 @@ O prazo em meses é derivado de `(idade aposentadoria - idade atual) × 12`.
 - **AdSense:** ca-pub-5865817649832793 (mesmo do CRP)
 - **Vercel Analytics:** `/_vercel/insights/script.js`
 
+## Links de doação (Stripe)
+- **PT:** `https://donate.stripe.com/8x25kE16O5GEb1Y3Kkcwg04`
+- **EN:** `https://donate.stripe.com/aFa4gA02K0mkfiedkUcwg03`
+
+## Brevo — listas de email
+- **PT:** lista 13 (`BREVO_LIST_ID=13`)
+- **EN:** lista 14 (`BREVO_LIST_ID_EN=14`)
+
 ## Stack e regras técnicas
 - HTML + CSS + JS puros — zero frameworks, zero React, zero Bootstrap, zero jQuery
 - Hospedagem: Vercel
