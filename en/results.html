@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Resultados | Calculadora de Aposentadoria</title>
-  <meta name="description" content="Veja os resultados da sua simulação de aposentadoria. Patrimônio acumulado, rendimentos e renda mensal calculados com juros compostos." />
+  <title>Results | Retirement Calculator</title>
+  <meta name="description" content="View your retirement simulation results. Accumulated wealth, returns and monthly income calculated with compound interest." />
   <meta name="robots" content="noindex, follow" />
 
-  <link rel="canonical" href="https://calcularaposentadoria.com" />
+  <link rel="canonical" href="https://calcularaposentadoria.com/en/" />
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -42,7 +42,7 @@
 </head>
 <body>
 
-  <button id="backToTop" aria-label="Voltar ao topo">
+  <button id="backToTop" aria-label="Back to top">
     <i class="fa-solid fa-circle-arrow-up" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i>
   </button>
 
@@ -51,77 +51,77 @@
       <div class="calculadora-container">
         <script src="/js/header-card.js"></script>
 
-        <!-- Resultados com flip card já virado -->
-        <section class="flip-card flip-card-flipped" aria-label="Resultados da calculadora">
+        <!-- Results with flip card already flipped -->
+        <section class="flip-card flip-card-flipped" aria-label="Calculator results">
           <div class="flip-card-inner">
 
-            <!-- Frente (oculta) — duplica o formulário para a animação de volta -->
+            <!-- Front (hidden) -->
             <div class="flip-card-front">
               <form id="rendaForm" novalidate>
-                <p class="input-hint">Deixe em branco o campo que deseja calcular</p>
+                <p class="input-hint">Leave blank the field you want to calculate</p>
                 <div class="form-row">
                   <div class="input-float">
                     <input type="search" inputmode="numeric" id="idade_atual" placeholder=" " maxlength="2" autocomplete="off" />
-                    <label for="idade_atual">Idade atual (anos)</label>
+                    <label for="idade_atual">Current age (years)</label>
                   </div>
                   <div class="input-float">
                     <input type="search" inputmode="numeric" id="idade_aposentadoria" placeholder=" " maxlength="2" autocomplete="off" />
-                    <label for="idade_aposentadoria">Idade aposentadoria (anos)</label>
+                    <label for="idade_aposentadoria">Retirement age (years)</label>
                   </div>
                 </div>
                 <div class="input-float">
                   <input type="search" inputmode="numeric" class="percent" id="txPeriodoAnual" placeholder=" " maxlength="7" autocomplete="off" />
-                  <label for="txPeriodoAnual">Taxa de juros anual (%)</label>
+                  <label for="txPeriodoAnual">Annual interest rate (%)</label>
                 </div>
                 <div class="form-row">
                   <div class="input-float">
                     <input type="search" inputmode="numeric" class="value" id="valorInicial" placeholder=" " autocomplete="off" />
-                    <label for="valorInicial">Valor inicial (R$)</label>
+                    <label for="valorInicial">Initial amount ($)</label>
                   </div>
                   <div class="input-float">
                     <input type="search" inputmode="numeric" class="value" id="valorRecorrente" placeholder=" " autocomplete="off" />
-                    <label for="valorRecorrente">Aporte mensal (R$)</label>
+                    <label for="valorRecorrente">Monthly contribution ($)</label>
                   </div>
                 </div>
                 <div class="input-float">
                   <input type="search" inputmode="numeric" class="value" id="aposentadoria" placeholder=" " autocomplete="off" />
-                  <label for="aposentadoria">Renda de aposentadoria (R$)</label>
+                  <label for="aposentadoria">Desired retirement income ($)</label>
                 </div>
                 <div class="calc-actions">
                   <button type="button" class="btn-primary" id="calcularBtn">
-                    Calcular <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    Calculate <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                   </button>
                 </div>
               </form>
             </div>
 
-            <!-- Verso: resultados -->
+            <!-- Back: results -->
             <div class="flip-card-back">
               <div class="result-header">
                 <div style="display:flex;align-items:center;gap:0.75rem;">
                   <div class="card-icon"><i class="fa-solid fa-square-poll-vertical" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-                  <span class="card-title">Resultados</span>
+                  <span class="card-title">Results</span>
                 </div>
                 <div class="result-actions">
-                  <a href="#sec-compartilhar" class="btn-nav" title="Compartilhar resultado" aria-label="Compartilhar resultado">
+                  <a href="#sec-compartilhar" class="btn-nav" title="Share result" aria-label="Share result">
                     <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
                   </a>
-                  <a href="#sec-grafico" class="btn-nav" title="Gráfico de evolução" aria-label="Gráfico de evolução">
+                  <a href="#sec-grafico" class="btn-nav" title="Growth chart" aria-label="Growth chart">
                     <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
                   </a>
-                  <a href="#sec-email" class="btn-nav" title="Novidades por email" aria-label="Novidades por email">
+                  <a href="#sec-email" class="btn-nav" title="Email updates" aria-label="Email updates">
                     <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                   </a>
-                  <a href="#sec-apoio" class="btn-nav" title="Apoie o site" aria-label="Apoie o site">
+                  <a href="#sec-apoio" class="btn-nav" title="Support the site" aria-label="Support the site">
                     <i class="fa-solid fa-coins" aria-hidden="true"></i>
                   </a>
-                  <a href="#sec-ferramentas" class="btn-nav" title="Outras ferramentas" aria-label="Outras ferramentas">
+                  <a href="#sec-ferramentas" class="btn-nav" title="Other tools" aria-label="Other tools">
                     <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
                   </a>
-                  <a href="#blog" class="btn-nav" title="Artigos" aria-label="Artigos">
+                  <a href="#blog" class="btn-nav" title="Articles" aria-label="Articles">
                     <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
                   </a>
-                  <a href="/artigos/entendendo-os-resultados.html" class="btn-icon" title="Entendendo os resultados" aria-label="Entendendo os resultados">
+                  <a href="/en/articles/understanding-the-results.html" class="btn-icon" title="Understanding the results" aria-label="Understanding the results">
                     <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -142,147 +142,147 @@
               </div>
 
               <button type="button" class="btn-primary" id="voltarBtn" style="margin-top:1rem;">
-                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Recalcular
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Recalculate
               </button>
             </div>
           </div>
         </section>
 
-        <!-- Card Compartilhável -->
-        <section id="sec-compartilhar" class="card share-card-section" aria-label="Compartilhe seu resultado">
+        <!-- Shareable Card -->
+        <section id="sec-compartilhar" class="card share-card-section" aria-label="Share your result">
           <div class="card-header">
             <div class="card-icon"><i class="fa-solid fa-share-nodes" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-            <span class="card-title">Compartilhe seu resultado</span>
+            <span class="card-title">Share your result</span>
           </div>
           <div class="share-preview">
-            <canvas id="cardCompartilhar" aria-label="Card com seu resultado de aposentadoria"></canvas>
+            <canvas id="cardCompartilhar" aria-label="Card with your retirement result"></canvas>
           </div>
           <div class="share-buttons">
             <button class="btn-share btn-download" onclick="compartilharResultado()">
-              <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartilhar
+              <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share
             </button>
           </div>
         </section>
 
-        <!-- Gráfico de Evolução do Patrimônio -->
-        <section id="sec-grafico" class="card chart-card" aria-label="Evolução do patrimônio">
+        <!-- Wealth Growth Chart -->
+        <section id="sec-grafico" class="card chart-card" aria-label="Wealth growth chart">
           <div class="card-header">
             <div class="card-icon"><i class="fa-solid fa-chart-line" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-            <span class="card-title">Evolução do Patrimônio</span>
+            <span class="card-title">Wealth Growth</span>
           </div>
           <div class="chart-container">
-            <canvas id="graficoPatrimonio" aria-label="Gráfico de evolução do patrimônio acumulado"></canvas>
+            <canvas id="graficoPatrimonio" aria-label="Accumulated wealth growth chart"></canvas>
           </div>
         </section>
 
-        <!-- Captura de Email -->
-        <section id="sec-email" class="card email-section" aria-label="Receba novidades">
+        <!-- Email Capture -->
+        <section id="sec-email" class="card email-section" aria-label="Get updates">
           <div class="card-header">
             <div class="card-icon"><i class="fa-solid fa-envelope" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-            <span class="card-title">Fique por dentro das novidades</span>
+            <span class="card-title">Stay up to date</span>
           </div>
-          <p class="email-subtitle">Novidades do site direto no seu email. Sem spam.</p>
+          <p class="email-subtitle">Site updates delivered to your inbox. No spam.</p>
           <form id="emailForm" class="email-form" novalidate>
             <div class="email-row">
-              <input type="email" id="emailInput" class="email-input" placeholder="seu@email.com" autocomplete="email" required />
-              <button type="submit" id="emailBtn" class="btn-primary email-btn">Quero novidades</button>
+              <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" autocomplete="email" required />
+              <button type="submit" id="emailBtn" class="btn-primary email-btn">Get updates</button>
             </div>
             <p id="emailMsg" class="email-msg" aria-live="polite"></p>
           </form>
         </section>
 
-        <!-- Apoie o site -->
-        <section id="sec-apoio" class="card" aria-label="Apoie o site">
+        <!-- Support -->
+        <section id="sec-apoio" class="card" aria-label="Support the site">
           <div class="card-header">
             <div class="card-icon"><i class="fa-solid fa-coins" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-            <span class="card-title">Ajude a manter o site</span>
+            <span class="card-title">Help keep the site free</span>
           </div>
           <div class="support-grid">
             <div>
               <a href="https://donate.stripe.com/8x25kE16O5GEb1Y3Kkcwg04" target="_blank" rel="noopener" class="btn-dark">
                 <i class="fa-solid fa-hand-holding-dollar btn-dark-icon" aria-hidden="true"></i>
-                <span>Doação</span>
+                <span>Donate</span>
               </a>
-              <p class="support-note">Ajude-nos e contribua com qualquer valor.</p>
+              <p class="support-note">Support us with any amount.</p>
             </div>
             <div>
               <a href="https://link.mercadopago.com.br/carlosdev" target="_blank" rel="noopener" class="btn-dark">
                 <i class="fa-solid fa-mug-hot btn-dark-icon" aria-hidden="true"></i>
-                <span>Gorjeta</span>
+                <span>Tip</span>
               </a>
-              <p class="support-note">Pague uma gorjeta e nos ajude a crescer.</p>
+              <p class="support-note">Buy us a coffee and help us grow.</p>
             </div>
           </div>
         </section>
 
-        <!-- Outras ferramentas -->
-        <section id="sec-ferramentas" class="card" aria-label="Outras ferramentas">
+        <!-- Other tools -->
+        <section id="sec-ferramentas" class="card" aria-label="Other tools">
           <div class="card-header">
             <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-            <span class="card-title">Outras ferramentas</span>
+            <span class="card-title">Other tools</span>
           </div>
           <div class="tools-grid">
-            <a href="https://calcularrendapassiva.com" target="_blank" rel="noopener" class="tool-card">
+            <a href="https://calcularrendapassiva.com/en" target="_blank" rel="noopener" class="tool-card">
               <i class="fa-solid fa-chart-line tool-card-icon" aria-hidden="true"></i>
               <div>
-                <strong>Calculadora de Renda Passiva</strong>
-                <small>Estime quanto tempo falta para atingir sua renda passiva ideal.</small>
+                <strong>Passive Income Calculator</strong>
+                <small>Estimate how long until you reach your ideal passive income.</small>
               </div>
             </a>
             <a href="https://calcularemprestimo.com" target="_blank" rel="noopener" class="tool-card">
               <i class="fa-solid fa-money-bill-wave tool-card-icon" aria-hidden="true"></i>
               <div>
-                <strong>Calculadora de Empréstimo</strong>
-                <small>Calcule parcelas, prazo ou taxa nas tabelas PRICE ou SAC.</small>
+                <strong>Loan Calculator</strong>
+                <small>Calculate installments, period or rate for any loan.</small>
               </div>
             </a>
             <a href="https://calculadorasfinanceiras.com.br" target="_blank" rel="noopener" class="tool-card">
               <i class="fa-solid fa-calculator tool-card-icon" aria-hidden="true"></i>
               <div>
-                <strong>Calculadoras Financeiras</strong>
-                <small>Todas as nossas ferramentas gratuitas em um só lugar.</small>
+                <strong>Financial Calculators</strong>
+                <small>All our free tools in one place.</small>
               </div>
             </a>
           </div>
         </section>
 
-        <!-- Artigos -->
-        <section class="card" id="blog" aria-label="Artigos">
+        <!-- Articles -->
+        <section class="card" id="blog" aria-label="Articles">
           <div class="card-header">
             <div class="card-icon"><i class="fa-solid fa-newspaper" style="color:#eb47eb;font-size:32px;" aria-hidden="true"></i></div>
-            <span class="card-title">Artigos</span>
+            <span class="card-title">Articles</span>
           </div>
 
           <article>
-            <a href="/artigos/entendendo-os-resultados.html" class="article-featured">
-              <strong>Entendendo os Resultados</strong>
-              <small>Saiba interpretar patrimônio acumulado, rendimentos e renda de aposentadoria calculada.</small>
+            <a href="/en/articles/understanding-the-results.html" class="article-featured">
+              <strong>Understanding the Results</strong>
+              <small>Learn to interpret accumulated wealth, returns and retirement income from the calculator.</small>
             </a>
           </article>
 
           <article>
-            <a href="/artigos/como-usar-calculadora-aposentadoria.html" class="article-card">
+            <a href="/en/articles/how-to-use-retirement-calculator.html" class="article-card">
               <div class="article-body">
-                <strong>Como Usar a Calculadora de Aposentadoria</strong>
-                <small>Aprenda a preencher os campos e simule diferentes cenários para planejar sua aposentadoria.</small>
+                <strong>How to Use the Retirement Calculator</strong>
+                <small>Learn how to fill in the fields and simulate different scenarios to plan your retirement.</small>
               </div>
             </a>
           </article>
 
           <article>
-            <a href="/artigos/quanto-preciso-para-me-aposentar.html" class="article-card">
+            <a href="/en/articles/how-much-do-i-need-to-retire.html" class="article-card">
               <div class="article-body">
-                <strong>Quanto Preciso Para me Aposentar?</strong>
-                <small>Simulações práticas para descobrir o patrimônio necessário para se aposentar com segurança.</small>
+                <strong>How Much Do I Need to Retire?</strong>
+                <small>Practical simulations to find the wealth needed to retire safely.</small>
               </div>
             </a>
           </article>
 
           <article>
-            <a href="/artigos/o-que-e-aposentadoria.html" class="article-card">
+            <a href="/en/articles/what-is-retirement.html" class="article-card">
               <div class="article-body">
-                <strong>O que é Aposentadoria?</strong>
-                <small>Entenda o conceito, os tipos de aposentadoria e como planejar sua independência financeira.</small>
+                <strong>What is Retirement?</strong>
+                <small>Understand the concept, the types of retirement and how to plan your financial independence.</small>
               </div>
             </a>
           </article>
@@ -292,9 +292,9 @@
     </main>
 
     <footer>
-      <p>&copy; 2025 Calcular Aposentadoria. Todos os direitos reservados.</p>
-      <a href="/termos-de-uso-e-politicas-de-privacidade.html" target="_blank">Termos de Uso e Políticas de Privacidade</a>
-      <p style="margin-top:0.25rem;">Desenvolvido com ❤️ por <a href="https://carlosdev.com.br" target="_blank" rel="noopener">Carlos Dev</a></p>
+      <p>&copy; 2025 Retirement Calculator. All rights reserved.</p>
+      <a href="/termos-de-uso-e-politicas-de-privacidade.html" target="_blank">Terms of Use and Privacy Policy</a>
+      <p style="margin-top:0.25rem;">Built with ❤️ by <a href="https://carlosdev.com.br" target="_blank" rel="noopener">Carlos Dev</a></p>
       <div class="social-icons">
         <a href="https://www.youtube.com/@carlosjornadadev" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
         <a href="https://github.com/cwrsiqueira" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -307,7 +307,7 @@
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
 
-  <!-- Calculadora -->
+  <!-- Calculator -->
   <script defer src="/js/calculadora.js"></script>
   <!-- Email -->
   <script defer src="/js/email.js"></script>

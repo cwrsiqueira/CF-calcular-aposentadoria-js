@@ -2,20 +2,17 @@
   const path = window.location.pathname;
   const isEn = path.startsWith('/en');
 
-  // Bilingual pairs: current path → alternate language URL
   const PAIRS = {
     '/':    '/en/',
     '/en/': '/',
-    '/articles/o-que-e-renda-passiva.html':          '/en/articles/what-is-passive-income.html',
-    '/articles/como-usar-calculadora-renda-passiva.html': '/en/articles/how-to-use-passive-income-calculator.html',
-    '/en/articles/what-is-passive-income.html':          '/articles/o-que-e-renda-passiva.html',
-    '/en/articles/how-to-use-passive-income-calculator.html': '/articles/como-usar-calculadora-renda-passiva.html',
+    '/results.html':    '/en/results.html',
+    '/en/results.html': '/results.html',
   };
 
-  const title    = isEn ? 'Passive Income Calculator'      : 'Calculadora de Renda Passiva';
+  const title    = isEn ? 'Retirement Calculator'      : 'Calculadora de Aposentadoria';
   const subtitle = isEn
-    ? 'Discover how much to invest to live off passive income.'
-    : 'Descubra quanto investir para viver de renda.';
+    ? 'Plan your retirement. Calculate how much to save and when to retire.'
+    : 'Planeje sua aposentadoria. Calcule quanto poupar e quando se aposentar.';
 
   const altUrl = PAIRS[path] || null;
 
@@ -30,7 +27,7 @@
   card.className = 'card header-card';
   card.innerHTML =
     '<div class="header-card-brand">' +
-      '<i class="fa-solid fa-calculator header-card-icon" aria-hidden="true"></i>' +
+      '<i class="fa-solid fa-umbrella-beach header-card-icon" aria-hidden="true"></i>' +
       '<div>' +
         '<span class="header-card-title">' + title + '</span>' +
         '<span class="header-card-subtitle">' + subtitle + '</span>' +

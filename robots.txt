@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /results.html
+Disallow: /en/results.html
 
-Sitemap: https://calcularrendapassiva.com/sitemap.xml
+Sitemap: https://calcularaposentadoria.com/sitemap.xml
