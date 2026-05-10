@@ -246,8 +246,8 @@ function calcularAposentadoria() {
   sessionStorage.setItem('prazo',               prazo ? calcularAnosEMeses(prazo) : 'N/A');
   sessionStorage.setItem('idadeAtualResult',    String(idadeAtualCalculada || 'N/A'));
   sessionStorage.setItem('idadeAposenResult',   String(idadeAposenCalculada || 'N/A'));
-  sessionStorage.setItem('taxaResult',          taxa ? formatarValor(taxa.toFixed(4), false) : 'N/A');
-  sessionStorage.setItem('taxaAnualResult',     taxaAnual ? formatarValor(taxaAnual.toFixed(2), false) : 'N/A');
+  sessionStorage.setItem('taxaResult',          taxa ? formatarValor(taxa, false) : 'N/A');
+  sessionStorage.setItem('taxaAnualResult',     taxaAnual ? formatarValor(taxaAnual, false) : 'N/A');
   sessionStorage.setItem('valorInicialResult',  inicial ? formatarValor(inicial, false) : 'N/A');
   sessionStorage.setItem('valorRecorrenteResult', recorrente ? formatarValor(recorrente, false) : 'N/A');
   sessionStorage.setItem('valorInvestido',      investido ? formatarValor(investido, false) : 'N/A');
