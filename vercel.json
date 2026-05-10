@@ -2,8 +2,8 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.calcularrendapassiva.com" }],
-      "destination": "https://calcularrendapassiva.com/:path*",
+      "has": [{ "type": "host", "value": "www.calcularaposentadoria.com" }],
+      "destination": "https://calcularaposentadoria.com/:path*",
       "permanent": true
     }
   ],
