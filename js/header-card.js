@@ -5,8 +5,6 @@
   const PAIRS = {
     '/':    '/en/',
     '/en/': '/',
-    '/results.html':    '/en/results.html',
-    '/en/results.html': '/results.html',
   };
 
   const title    = isEn ? 'Retirement Calculator'      : 'Calculadora de Aposentadoria';

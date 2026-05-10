@@ -281,9 +281,10 @@ function setResult(id, label, value, prefix, suffix) {
   el.innerHTML = `<span>${label}</span><span>${val}</span>`;
 }
 
-const CUR = 'R$ ';
-setResult('resultIdadeAtual',    L.idadeAtual,  sessionStorage.getItem('idadeAtualResult'),    '', ' anos');
-setResult('resultIdadeAposen',   L.idadeAposen, sessionStorage.getItem('idadeAposenResult'),   '', ' anos');
+const CUR = LANG === 'en' ? '$ ' : 'R$ ';
+const AGE_SUFFIX = LANG === 'en' ? ' years' : ' anos';
+setResult('resultIdadeAtual',    L.idadeAtual,  sessionStorage.getItem('idadeAtualResult'),    '', AGE_SUFFIX);
+setResult('resultIdadeAposen',   L.idadeAposen, sessionStorage.getItem('idadeAposenResult'),   '', AGE_SUFFIX);
 setResult('resultPrazo',         L.prazo,       sessionStorage.getItem('prazo'));
 setResult('resultValorInicial',  L.vi,          sessionStorage.getItem('valorInicialResult'),  CUR);
 setResult('resultValorRecorrente', L.vr,        sessionStorage.getItem('valorRecorrenteResult'), CUR);
@@ -292,7 +293,7 @@ setResult('resultRendimentos',   L.rend,        sessionStorage.getItem('rendimen
 setResult('resultValorAcumulado', L.acum,       sessionStorage.getItem('valorAcumulado'),      CUR);
 setResult('resultTaxa',          L.taxa,        sessionStorage.getItem('taxaResult'),          '', ' %');
 setResult('resultTaxaAnual',     L.taxaA,       sessionStorage.getItem('taxaAnualResult'),     '', ' %');
-setResult('resultAposentadoria', L.renda,       sessionStorage.getItem('aposentadoriaResult'), CUR, '/mês');
+setResult('resultAposentadoria', L.renda,       sessionStorage.getItem('aposentadoriaResult'), CUR, LANG === 'en' ? '/month' : '/mês');
 
 // Destaca o campo calculado
 const campoMap = ['resultPrazo', 'resultValorInicial', 'resultValorRecorrente', 'resultTaxa', 'resultAposentadoria'];
@@ -309,8 +310,8 @@ function renderizarGrafico() {
   const pontos = JSON.parse(raw);
   if (pontos.length < 2) return;
 
-  const cur = 'R$';
-  const loc = 'pt-BR';
+  const cur = LANG === 'en' ? '$' : 'R$';
+  const loc = LANG === 'en' ? 'en-US' : 'pt-BR';
 
   const labels = pontos.map(p => {
     const anos = Math.floor(p.m / 12);
