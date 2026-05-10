@@ -11,8 +11,8 @@ module.exports = async function handler(req, res) {
 
   const apiKey = process.env.BREVO_API_KEY;
   const listId = lang === 'en'
-    ? parseInt(process.env.BREVO_LIST_ID_EN || '12', 10)
-    : parseInt(process.env.BREVO_LIST_ID || '11', 10);
+    ? parseInt(process.env.BREVO_LIST_ID_EN || '14', 10)
+    : parseInt(process.env.BREVO_LIST_ID || '13', 10);
 
   if (!apiKey) {
     return res.status(500).json({ error: 'Configuração do servidor incompleta' });
