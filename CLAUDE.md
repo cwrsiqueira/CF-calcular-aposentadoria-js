@@ -94,6 +94,30 @@ IDs dos campos: `#idade_atual`, `#idade_aposentadoria`, `#txPeriodoAnual`, `#val
 - `document.currentScript` no `header-card.js` para injeção síncrona (sem FOUC)
 - Detecção de idioma em `js/calculadora.js`: `LANG = path.startsWith('/en') ? 'en' : 'pt'`
 
+## CSS mobile-first (padrão desde mai/2026)
+`css/style.css` segue a abordagem mobile-first idêntica ao CRP. Pontos críticos:
+- Variáveis: `--content-max: 37.5rem`, `--page-pad-x` com `env(safe-area-inset-*)` (notch iOS)
+- `html`: `overflow-x: clip` + `text-size-adjust: 100%`; `body`: `overflow-x: hidden` + `min-height: 100dvh`
+- `.header-card`: padrão `column/stretch` no mobile → `row` em `@media (min-width: 36rem)`
+- `.flip-card`: sem altura fixa — dimensionado via `syncFlipCardHeight()` em `js/calculadora.js`
+  - Faces com `position: absolute; inset: 0; overflow-y: auto` (sem corte de conteúdo)
+  - `.flip-card--measure`: classe utilitária que o JS aplica por 1 frame para medir o conteúdo real
+- `.result-header`: padrão `column` → `row` em `@media (min-width: 40rem)`
+  - Wrapper ícone+título usa classe `.result-header__title-row` (não inline style)
+- `.form-row`: padrão `column` → `row+wrap` em `@media (min-width: 36rem)`
+- `.tools-grid`: 1 coluna → 2 colunas em `@media (min-width: 30rem)`
+- `.affiliates-grid`: `column` → `row+wrap` em `@media (min-width: 48rem)`
+- `.email-row`: `column` → `row` em `@media (min-width: 30rem)`
+- `.btn-nav` / `.btn-icon`: `min-width/min-height: 2.75rem` para área de toque acessível
+- Breakpoints apenas com `min-width` (sem `max-width`)
+
+## JS: sincronização de altura do flip card
+`js/calculadora.js` contém `syncFlipCardHeight()` + `debounceFlipLayout()` + `initFlipCardLayout()`.
+- Mede a altura real das duas faces (frente e verso) usando a classe `.flip-card--measure`
+- Define `height` explícita no `.flip-card` e `.flip-card-inner` igual ao maior + 6px de padding
+- Inicializado com duplo `requestAnimationFrame` após DOM ready; re-executa em `resize` (debounce 150ms) e após `document.fonts.ready`
+- Garante que o flip card nunca tenha conteúdo cortado em mobile independente do número de campos
+
 ## Padrão de novos artigos
 Para cada novo artigo PT (`/artigos/`) ou EN (`/en/articles/`):
 - `<script src="/js/header-card.js"></script>` dentro do `calculadora-container`

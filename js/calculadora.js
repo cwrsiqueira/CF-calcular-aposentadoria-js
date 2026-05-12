@@ -34,6 +34,70 @@ const L = LANG === 'en' ? {
   homePage:      '/',
 };
 
+/* ===== Altura do flip card (conteúdo variável + mobile) ===== */
+function debounceFlipLayout(fn, ms) {
+  let t;
+  return function () {
+    clearTimeout(t);
+    t = setTimeout(fn, ms);
+  };
+}
+
+function syncFlipCardHeight() {
+  const root = document.querySelector('.flip-card');
+  const inner = root?.querySelector('.flip-card-inner');
+  const front = root?.querySelector('.flip-card-front');
+  const back = root?.querySelector('.flip-card-back');
+  if (!root || !inner || !front || !back) return;
+
+  root.style.height = '';
+  inner.style.height = '';
+
+  root.classList.add('flip-card--measure');
+  const prevInnerTransform = inner.style.transform;
+  inner.style.transform = 'none';
+
+  front.style.display = 'block';
+  back.style.display = 'none';
+  void inner.offsetHeight;
+  const hFront = inner.getBoundingClientRect().height;
+
+  front.style.display = 'none';
+  back.style.display = 'block';
+  void inner.offsetHeight;
+  const hBack = inner.getBoundingClientRect().height;
+
+  front.style.display = '';
+  back.style.display = '';
+  inner.style.transform = prevInnerTransform;
+  root.classList.remove('flip-card--measure');
+
+  const pad = 6;
+  const h = Math.max(Math.ceil(Math.max(hFront, hBack)) + pad, 280);
+  root.style.height = `${h}px`;
+  inner.style.height = `${h}px`;
+}
+
+const debouncedSyncFlipCard = debounceFlipLayout(syncFlipCardHeight, 150);
+let flipCardLayoutInitialized = false;
+
+function initFlipCardLayout() {
+  syncFlipCardHeight();
+  if (!flipCardLayoutInitialized) {
+    flipCardLayoutInitialized = true;
+    window.addEventListener('resize', debouncedSyncFlipCard);
+    document.fonts?.ready?.then(syncFlipCardHeight);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => requestAnimationFrame(initFlipCardLayout));
+  });
+} else {
+  requestAnimationFrame(() => requestAnimationFrame(initFlipCardLayout));
+}
+
 /* ===== MÁSCARAS (vanilla JS) ===== */
 function applyMoneyMask(input) {
   input.addEventListener('input', function () {
