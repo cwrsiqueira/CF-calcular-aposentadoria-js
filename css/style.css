@@ -975,7 +975,6 @@ footer p { margin-bottom: 0.25rem; }
   .support-grid { flex-direction: row; }
 }
 
-/* ===== ADSENSE — bloqueia ads dentro dos cards e flip card ===== */
-.calculadora-container ins.adsbygoogle,
+/* ===== ADSENSE — bloqueia ads dentro de cards e flip card, mas permite entre seções ===== */
 .flip-card ins.adsbygoogle,
 .card ins.adsbygoogle { display: none !important; }

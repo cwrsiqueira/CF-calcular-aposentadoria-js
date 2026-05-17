@@ -84,7 +84,8 @@ IDs dos campos: `#idade_atual`, `#idade_aposentadoria`, `#txPeriodoAnual`, `#val
 - JSON-LD: `WebApplication` (com `potentialAction`) + `Organization` (com `sameAs`) em PT e EN
 - `sitemap.xml` completo com 14 URLs e hreflang em cada entrada
 - `robots.txt` exclui `/results.html` e `/en/results.html`
-- AdSense bloqueado dentro de `.calculadora-container` via CSS (`display:none !important`)
+- AdSense bloqueado dentro de `.flip-card` e `.card` via CSS (`display:none !important`), mas **permitido** em `<div>` simples entre seções dentro de `.calculadora-container`
+- Slot ativo: `8539778688` — colocado 1 acima da calculadora (index PT/EN), 1 acima dos resultados (results PT/EN), 1 no início de cada artigo PT/EN (entre o `header-card.js` e o `<article class="card">`)
 
 ## Stack e regras técnicas
 - HTML + CSS + JS puros — zero frameworks, zero React, zero Bootstrap, zero jQuery
